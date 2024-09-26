@@ -4,8 +4,10 @@ docker build -t item-app:v1 .
 docker image ls -a
 
 # Merubah nama
-docker tag my-image:v1 yufebra/item-app:v1
+docker tag item-app:v1 yufebra/item-app:v1
 
 # Melakukan login ke docker dengan command
 docker login
+
+# Push ke hub
 docker push yufebra/item-app:v1
