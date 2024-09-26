@@ -6,27 +6,27 @@ services:
   item-app:
     # Menggunakan image hasil push
     image: yufebra/item-app:v1
-
     # Container tidak akan berjalan sebelum item-db jalan
     depends_on:
       - item-db
-
     # Mapping port yang di internal 8080 ke 80 di host
     ports:
       - "80:8080"
+    # Restart policy untuk melakukan restart otomatis ketika terhenti
+    restart: always
 
   # Container database
   item-db:
     # Menggunakan mongodb
     image: mongo:3
-
     # Mengatur volume agar menggunakan app-db
     volumes:
       - app-db:/data/db
-
     # Meneruskan port ke host dengan port yang sama
     ports:
       - "27017:27017"
+    # Restart policy untuk melakukan restart otomatis ketika terhenti
+    restart: always
 
 volumes:
   app-db:
